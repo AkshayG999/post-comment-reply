@@ -1,16 +1,14 @@
-import * as React from 'react';
-import { useState, useEffect } from "react";
+import React, { useState, useEffect } from 'react';
 import Box from '@mui/material/Box';
 import Input from '@mui/material/Input';
 import InputLabel from '@mui/material/InputLabel';
 import InputAdornment from '@mui/material/InputAdornment';
 import FormControl from '@mui/material/FormControl';
-import { Button, Link, Typography, Alert, AlertTitle, TextField, } from '@mui/material';
+import { Button, Link, Typography, Alert, AlertTitle } from '@mui/material';
 import { Container, Stack } from '@mui/system';
 import axios from 'axios';
- 
 
-export default function AddPost() {
+export default function EditPost(props) {
 
     let currData = {
         title: '',
@@ -18,6 +16,7 @@ export default function AddPost() {
     }
 
     const [values, setValues] = React.useState(currData);
+
     const [Success, setSuccess] = useState("");
     const [error, setError] = useState("");
 
@@ -25,27 +24,30 @@ export default function AddPost() {
         setValues({ ...values, [prop]: event.target.value })
     };
 
+    const [posts, setPosts] = useState([]);
+    var id = localStorage.getItem('edit_id')
+
     const handleSubmit = async (e) => {
         e.preventDefault()
+        console.log(id)
+        axios.patch(`http://localhost:4000/posts/${id}`, values)
 
-        axios.post(`http://localhost:4000/posts`, values)
             .then(res => {
                 setValues(currData)
-                // console.log(res.data.message);
+                console.log(res.data.message);
                 setSuccess(res.data.message)
                 setTimeout(() => {
                     setSuccess("")
                 }, 3000)
             })
             .catch(err => {
-                // console.log(err.message);
-                setError(err.message)
+                console.log(err.response.data.message);
+                setError(err.response.data.message)
                 setTimeout(() => {
                     setError("")
                 }, 3000)
             })
     }
-
     return (
         <Container maxWidth="sm">
             <Box container direction="row"
@@ -61,7 +63,7 @@ export default function AddPost() {
                     spacing={3}
                 >
                     <Typography sx={{ pt: '20px', ml: '30px' }}>
-                        <h1>Creact Your Post</h1>
+                        <h1> Edite Post</h1>
                     </Typography>
                     {error && (
                         <Alert severity="error">
@@ -72,7 +74,7 @@ export default function AddPost() {
                     {Success && (
                         <Alert severity="success">
                             <AlertTitle>Success</AlertTitle>
-                            This is a success alert — <strong> Post Created  {Success}</strong>
+                            This is a success alert — <strong> Post Updated  {Success}</strong>
                         </Alert>
                     )}
                     <FormControl sx={{ m: 1, width: '40ch' }} variant="standard">
@@ -101,13 +103,15 @@ export default function AddPost() {
                             }
                         />
                     </FormControl>
+
                     <FormControl onClick={handleSubmit} sx={{ width: '50%', height: '40px', mt: '50px' }}>
                         <Button variant="contained"
                             sx={{ bgcolor: 'green' }}
                         >
-                            + Add Post
+                            + Submite
                         </Button>
                     </FormControl>
+
                     <div>
                         <Link href='/'>
                             <Button variant="text" >

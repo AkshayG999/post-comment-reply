@@ -3,12 +3,12 @@ import { useEffect, useState } from 'react'
 import Box from '@mui/material/Box';
 import Card from '@mui/material/Card';
 import CardContent from '@mui/material/CardContent';
-import Typography from '@mui/material/Typography';
 import { experimentalStyled as styled } from '@mui/material/styles';
 import Paper from '@mui/material/Paper';
 import Grid from '@mui/material/Grid';
 import axios from 'axios';
 import { useNavigate } from 'react-router-dom';
+import { Button, Link, Typography, Alert, AlertTitle} from '@mui/material';
 
 
 const Item = styled(Paper)(({ theme }) => ({
@@ -18,16 +18,7 @@ const Item = styled(Paper)(({ theme }) => ({
     textAlign: 'center',
     color: theme.palette.text.secondary,
 }));
-
-const bull = (
-    <Box
-        component="span"
-        sx={{ display: 'inline-block', mx: '2px', transform: 'scale(0.8)' }}
-    >
-        •
-    </Box>
-)
-
+ 
 export default function Home() {
 
     const [posts, setPosts] = useState([]);
@@ -43,43 +34,110 @@ export default function Home() {
     }, []);
     // console.log(posts)
 
+
+    function Copyright() {
+        return (
+            <Typography variant="body2" color="text.secondary" align="center">
+                {'Copyright © '}
+                <Link color="inherit" href="https://www.youtube.com/@programming-geek">
+                    My Youtub Channel 👻
+                </Link>{' '}
+                {new Date().getFullYear()}
+                {'.'}
+            </Typography>
+        );
+    }
+
     let navigate = useNavigate()
+    const [Success, setSuccess] = useState("");
+    const [error, setError] = useState("");
+
     const CurrentCard = (e, index) => {
         navigate(`/get-sigle-post/${e._id}`)
         localStorage.setItem('index', index)
         localStorage.setItem('id', e._id)
     }
 
+    const handlePostEdit = (e, index) => {
+        navigate(`/edit-post/${e._id}`)
+        // console.log(e._id)
+        localStorage.setItem('index', index)
+        localStorage.setItem('edit_id', e._id)
+    }
+
+    const handlePostDelete = (e, index) => {
+        axios.delete(`http://localhost:4000/posts/${e._id}`)
+            .then(res => {
+                console.log(res.data.message)
+                setSuccess(res.data.message)
+                setTimeout(() => {
+                    setSuccess("")
+                }, 3000)
+
+            })
+            .catch(err => {
+                console.log(err)
+                setError(err.message)
+                setTimeout(() => {
+                    setError("")
+                }, 3000)
+            })
+        window.location.reload();
+    }
+
     return (
+        <div>
+            <Box sx={{ m: '7%' }}>
+                {error && (
+                    <Alert severity="error">
+                        <AlertTitle>Error</AlertTitle>
+                        This is an error alert — <strong>{error}</strong>
+                    </Alert>
+                )}
+                {Success && (
+                    <Alert severity="success">
+                        <AlertTitle>Success</AlertTitle>
+                        This is a success alert — <strong> Post Created  {Success}</strong>
+                    </Alert>
+                )}
+                <Grid container spacing={{ xs: 2, md: 3 }} columns={{ xs: 4, sm: 8, md: 12 }}>
+                    {posts.map((e, index) => (
+                        <Grid item xs={2} sm={4} md={4} key={index}>
+                            <Item>
+                                <Card onClick={() => CurrentCard(e, index)} sx={{ minWidth: 275, maxWidth: 300 }}>
 
-        <Box sx={{ m: '7%' }}>
-            <Grid container spacing={{ xs: 2, md: 3 }} columns={{ xs: 4, sm: 8, md: 12 }}>
-                {posts.map((e, index) => (
-                    <Grid item xs={2} sm={4} md={4} key={index}>
-                        <Item>
-                            <Card onClick={() => CurrentCard(e, index)} sx={{ minWidth: 275, maxWidth: 300 }}>
+                                    <CardContent>
+                                        <Typography variant="h5" component="div">
+                                            {e.title}
+                                        </Typography>
+                                        {e.content.slice(0, 50) + "..."} <div><button>...read more</button></div>
+                                    </CardContent>
+                                </Card>
+                                <Button variant="contained" sx={{ minWidth: 100, maxWidth: 30, mt: '50px', margin: '20px' }} onClick={() => handlePostEdit(e, index)}>Edit</Button>
 
-                                <CardContent>
-                                    {/* <Typography sx={{ fontSize: 14 }} color="text.secondary" gutterBottom>
-                                        Order no : {e._id}
-                                    </Typography> */}
-                                    <Typography variant="h5" component="div">
-                                        {e.title}
-                                    </Typography>
-                                    <Typography sx={{ mb: 1.5 }} color="text.secondary">
-                                        {e.content}
-                                    </Typography>
-                                    {/* <Typography variant="body2">
-                                        Total price: ₹ {e.sub_total}
-                                        <br />
+                                <Button variant="contained" sx={{ minWidth: 100, maxWidth: 30, mt: '50px', margin: '20px' }} onClick={() => handlePostDelete(e, index)}>Delete</Button>
 
-                                    </Typography> */}
-                                </CardContent>
-                            </Card>
-                        </Item>
-                    </Grid>
-                ))}
-            </Grid>
-        </Box>
+                            </Item>
+                        </Grid>
+                    ))}
+
+
+                </Grid>
+            </Box>
+            <Box sx={{ bgcolor: 'background.paper', p: 6 }} component="footer">
+                <Typography variant="h6" align="center" gutterBottom>
+                    Channel
+                </Typography>
+                <Typography
+                    variant="subtitle1"
+                    align="center"
+                    color="text.secondary"
+                    component="p"
+                >
+                    Something here to !
+                </Typography>
+                <Copyright />
+            </Box>
+        </div >
     )
 }

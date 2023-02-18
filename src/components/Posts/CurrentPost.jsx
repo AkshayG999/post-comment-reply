@@ -1,30 +1,23 @@
 import * as React from 'react';
 import { useEffect, useState } from 'react'
-import AppBar from '@mui/material/AppBar';
-import Button from '@mui/material/Button';
-import CameraIcon from '@mui/icons-material/PhotoCamera';
-import Card from '@mui/material/Card';
-import CardActions from '@mui/material/CardActions';
-import CardContent from '@mui/material/CardContent';
-import CardMedia from '@mui/material/CardMedia';
 import CssBaseline from '@mui/material/CssBaseline';
 import Grid from '@mui/material/Grid';
 import Stack from '@mui/material/Stack';
 import Box from '@mui/material/Box';
-import Toolbar from '@mui/material/Toolbar';
 import Typography from '@mui/material/Typography';
 import Container from '@mui/material/Container';
 import Link from '@mui/material/Link';
 import { createTheme, ThemeProvider } from '@mui/material/styles';
-import Comments from '../Comments/Comments';
+// import Comments from '../Comment/Comments';
 import axios from 'axios';
+import Apps from "../../Apps"
 
 function Copyright() {
     return (
         <Typography variant="body2" color="text.secondary" align="center">
             {'Copyright © '}
-            <Link color="inherit" href="https://mui.com/">
-                Your Website
+            <Link color="inherit" href="https://www.youtube.com/@programming-geek">
+                My Youtub Channel 👻
             </Link>{' '}
             {new Date().getFullYear()}
             {'.'}
@@ -40,7 +33,7 @@ export default function CurrentPost(state) {
 
     const [posts, setPosts] = useState([]);
     var id = localStorage.getItem('id')
-
+     
     useEffect(() => {
         if (id) {
             axios.get(`http://localhost:4000/posts/${id}`)
@@ -54,25 +47,11 @@ export default function CurrentPost(state) {
 
     }, []);
 
-    // let index = localStorage.getItem('index')
-    // let data = {}
-    // if (index) {
-    //     data = posts
-    // }
-    console.log(posts.comments)
+    // console.log(posts.comments)
 
     return (
         <ThemeProvider theme={theme}>
             <CssBaseline />
-            {/* <AppBar position="relative">
-        <Toolbar>
-          <CameraIcon sx={{ mr: 2 }} />
-          <Typography variant="h6" color="inherit" noWrap>
-            Album layout
-          </Typography>
-        </Toolbar>
-      </AppBar> */}
-
             <main>
                 {/* Hero unit */}
                 <Box
@@ -108,23 +87,14 @@ export default function CurrentPost(state) {
                 <Container sx={{ py: 8 }} maxWidth="md">
                     {/* End hero unit */}
                     <Grid container spacing={4}>
-
-                        <Comments />
-                        {posts.comments.map((comment) => (
-                            <Comments
-                                author={comment.author}
-                                text={comment.text}
-                            // replies={comment.replies}
-                            />
-                        ))}
-
+                        <Apps />
                     </Grid>
                 </Container>
             </main>
             {/* Footer */}
             <Box sx={{ bgcolor: 'background.paper', p: 6 }} component="footer">
                 <Typography variant="h6" align="center" gutterBottom>
-                    Footer
+                    Channel
                 </Typography>
                 <Typography
                     variant="subtitle1"
@@ -132,7 +102,7 @@ export default function CurrentPost(state) {
                     color="text.secondary"
                     component="p"
                 >
-                    Something here to give the footer a purpose!
+                    Something here to !
                 </Typography>
                 <Copyright />
             </Box>

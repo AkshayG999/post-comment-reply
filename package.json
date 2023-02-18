@@ -17,6 +17,7 @@
     "react-redux": "^8.0.5",
     "react-router-dom": "^6.8.1",
     "react-scripts": "5.0.1",
+    "sass": "^1.58.2",
     "semantic-ui-react": "^2.1.4",
     "styled-components": "^5.3.6",
     "web-vitals": "^2.1.4"
