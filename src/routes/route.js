@@ -24,4 +24,5 @@ router.post('/posts/:post_id/comments/:commentId/reply', postMid, commentMid, cr
 router.patch('/posts/:post_id/comments/:commentId/reply', postMid, commentMid, updateReply)
 router.delete('/posts/:post_id/comments/:commentId/reply', postMid, commentMid, deleteReply)
 
+router.all('/*', (req, res) => res.status(400).send({ message: "Invalid HTTP End Point" }))
 module.exports = router

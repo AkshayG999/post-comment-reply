@@ -18,7 +18,7 @@ const createComment = async (req, res) => {
         req.post.comments.push(comment)
         await req.post.save()
 
-        return res.status(201).send({ data: comment })
+        return res.status(201).send({ message: " Created Successfully", data: comment })
 
     } catch (err) {
         return res.status(400).send({ message: err.message })
@@ -64,7 +64,7 @@ const updateComment = async (req, res) => {
         return res.status(400).send({ data: updatedComment })
 
     } catch (err) {
-        return res.status(400).send({ message: err.message })
+        return res.status(400).send({ message: "Update Successfully", message: err.message })
     }
 }
 

@@ -19,4 +19,6 @@ mongoose.connect(process.env.url, { useNewUrlParser: true })
 
 app.use('/', require('./routes/route'))
 
+app.use('/*', (req, res) => res.status(400).send({ message: "Invalid HTTP End Point" }))
+
 app.listen(process.env.port, () => console.log("Server Is Running On " + process.env.port))

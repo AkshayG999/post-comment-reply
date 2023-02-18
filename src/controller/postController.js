@@ -18,7 +18,7 @@ const createPost = async (req, res) => {
         }
 
         const post = await postModel.create(req.body)
-        return res.status(201).send({ data: post })
+        return res.status(201).send({ message: "Post Created Successfully", data: post })
 
     } catch (err) {
         return res.status(400).send({ message: err.message })
@@ -60,16 +60,24 @@ const singlePost = async (req, res) => {
 // update a post
 const updatePost = async (req, res) => {
     try {
-        const { title, content } = req.body
 
-        if (title) {
+        if (Object.values(req.body).length == 0) {
+            return res.status(400).send('Please Fill data')
+        }
+        const { title, content } = req.body
+        
+        if (title == '' && content == '') {
+            return res.status(400).send({message:'Please Fill data'})
+        }
+
+        if (title !== '') {
             req.post.title = req.body.title
         }
-        if (content) {
+        if (content !== '') {
             req.post.content = req.body.content
         }
         const updatedPost = await req.post.save()
-        return res.status(200).send({ data: updatedPost })
+        return res.status(200).send({ message: "Post Update Successfully", data: updatedPost })
 
     } catch (err) {
         return res.status(400).send({ message: err.message })
