@@ -73,7 +73,7 @@ export default function Home() {
                 setTimeout(() => {
                     setSuccess("")
                       window.location.reload();
-                }, 3000)
+                }, 2000)
 
             })
             .catch(err => {
