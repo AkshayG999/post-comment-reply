@@ -24,7 +24,7 @@ export default function Home() {
     const [posts, setPosts] = useState([]);
 
     useEffect(() => {
-        axios.get('http://localhost:4000/posts')
+        axios.get('https://impossible-gray-pocket.cyclic.app/posts')
             .then(res => {
                 setPosts(res.data.data);
             })
@@ -66,7 +66,7 @@ export default function Home() {
     }
 
     const handlePostDelete = (e, index) => {
-        axios.delete(`http://localhost:4000/posts/${e._id}`)
+        axios.delete(`https://impossible-gray-pocket.cyclic.app/posts/${e._id}`)
             .then(res => {
                 console.log(res.data.message)
                 setSuccess(res.data.message)
