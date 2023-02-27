@@ -73,7 +73,7 @@ export default function Home() {
                 setTimeout(() => {
                     setSuccess("")
                     window.location.reload();
-                }, 3000)
+                }, 2000)
 
             })
             .catch(err => {
@@ -108,7 +108,7 @@ export default function Home() {
 
                                     <CardContent>
                                         <Typography variant="h5" component="div">
-                                            {e.title}
+                                           {e.title.slice(0,70) + "..."}
                                         </Typography>
                                         {e.content.slice(0, 50) + "..."} <div><button>...read more</button></div>
                                     </CardContent>
