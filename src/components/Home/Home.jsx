@@ -72,6 +72,7 @@ export default function Home() {
                 setSuccess(res.data.message)
                 setTimeout(() => {
                     setSuccess("")
+                      window.location.reload();
                 }, 3000)
 
             })
@@ -82,7 +83,7 @@ export default function Home() {
                     setError("")
                 }, 3000)
             })
-        window.location.reload();
+
     }
 
     return (
