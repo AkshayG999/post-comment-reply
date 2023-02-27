@@ -30,7 +30,7 @@ export default function EditPost(props) {
     const handleSubmit = async (e) => {
         e.preventDefault()
         console.log(id)
-        axios.patch(`http://localhost:4000/posts/${id}`, values)
+        axios.patch(`https://impossible-gray-pocket.cyclic.app/posts/${id}`, values)
 
             .then(res => {
                 setValues(currData)
