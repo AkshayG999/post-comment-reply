@@ -7,7 +7,7 @@ require('dotenv').config()
 const port=process.env.PORT || 4000;
 
 app.use(cors({
-    origin: 'http://localhost:3000'
+    origin: 'https://client.dggtyh77ra2h8.amplifyapp.com'
 }))
 
 
