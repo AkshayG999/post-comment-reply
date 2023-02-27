@@ -33,7 +33,7 @@ export default function CurrentPost(state) {
      
     useEffect(() => {
         if (id) {
-            axios.get(`http://localhost:4000/posts/${id}`)
+            axios.get(`https://impossible-gray-pocket.cyclic.app/posts/${id}`)
                 .then(res => {
                     setPosts(res.data.data);
                 })
