@@ -28,7 +28,7 @@ export default function AddPost() {
     const handleSubmit = async (e) => {
         e.preventDefault()
 
-        axios.post(`http://localhost:4000/posts`, values)
+        axios.post(`https://impossible-gray-pocket.cyclic.app/posts`, values)
             .then(res => {
                 setValues(currData)
                 // console.log(res.data.message);
