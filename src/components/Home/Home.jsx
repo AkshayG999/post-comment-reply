@@ -8,7 +8,7 @@ import Paper from '@mui/material/Paper';
 import Grid from '@mui/material/Grid';
 import axios from 'axios';
 import { useNavigate } from 'react-router-dom';
-import { Button, Link, Typography, Alert, AlertTitle} from '@mui/material';
+import { Button, Link, Typography, Alert, AlertTitle } from '@mui/material';
 
 
 const Item = styled(Paper)(({ theme }) => ({
@@ -18,7 +18,7 @@ const Item = styled(Paper)(({ theme }) => ({
     textAlign: 'center',
     color: theme.palette.text.secondary,
 }));
- 
+
 export default function Home() {
 
     const [posts, setPosts] = useState([]);
@@ -72,8 +72,8 @@ export default function Home() {
                 setSuccess(res.data.message)
                 setTimeout(() => {
                     setSuccess("")
-                      window.location.reload();
-                }, 2000)
+                    window.location.reload();
+                }, 3000)
 
             })
             .catch(err => {
@@ -83,7 +83,6 @@ export default function Home() {
                     setError("")
                 }, 3000)
             })
-
     }
 
     return (
