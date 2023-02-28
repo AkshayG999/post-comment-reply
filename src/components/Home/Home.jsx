@@ -68,8 +68,9 @@ export default function Home() {
     const handlePostDelete = (e, index) => {
         axios.delete(`https://impossible-gray-pocket.cyclic.app/posts/${e._id}`)
             .then(res => {
-                console.log(res.data.message)
+//                 console.log(res.data.message)
                 setSuccess(res.data.message)
+                alert(res.data.message)
                 setTimeout(() => {
                     setSuccess("")
                     window.location.reload();
@@ -77,11 +78,12 @@ export default function Home() {
 
             })
             .catch(err => {
-                console.log(err)
+//                 console.log(err)
                 setError(err.message)
+                alert(err.message)
                 setTimeout(() => {
                     setError("")
-                }, 3000)
+                }, 2000)
             })
     }
 
