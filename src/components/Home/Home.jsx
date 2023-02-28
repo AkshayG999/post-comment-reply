@@ -70,7 +70,7 @@ export default function Home() {
             .then(res => {
                 console.log(res.data.message)
                 setSuccess(res.data.message)
-//                 alert(res.data.message)
+                alert(res.data.message)
                 setTimeout(() => {
                     setSuccess("")
                     window.location.reload();
@@ -80,7 +80,7 @@ export default function Home() {
             .catch(err => {
                 console.log(err)
                 setError(err.message)
-//                 alert(err.message)
+                alert(err.message)
                 setTimeout(() => {
                     setError("")
                 }, 2000)
