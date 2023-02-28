@@ -1,4 +1,4 @@
-# `Live Link=> https://client.dggtyh77ra2h8.amplifyapp.com`
+# `Live Link=>` https://client.dggtyh77ra2h8.amplifyapp.com
 
 # Getting Started with Create React App
 
