@@ -109,10 +109,10 @@ export default function Home() {
                                 <Card onClick={() => CurrentCard(e, index)} sx={{ minWidth: 275, maxWidth: 300 }}>
 
                                     <CardContent>
-                                        <Typography variant="h5" component="div">
-                                           {e.title.slice(0,70) + "..."}
+                                        <Typography variant="h5" fontWeight={'bold'} component="div">
+                                            {e.title.slice(0, 70) + "..."}
                                         </Typography>
-                                        {e.content.slice(0, 50) + "..."} <div><button>read more</button></div>
+                                        {e.content.slice(0, 100) + "..."} <div><button>read more</button></div>
                                     </CardContent>
                                 </Card>
                                 <Button variant="contained" sx={{ minWidth: 100, maxWidth: 30, mt: '50px', margin: '20px' }} onClick={() => handlePostEdit(e, index)}>Edit</Button>
