@@ -5,30 +5,15 @@ import Toolbar from '@mui/material/Toolbar';
 import Typography from '@mui/material/Typography';
 import IconButton from '@mui/material/IconButton';
 import MenuIcon from '@mui/icons-material/Menu';
-
-import Switch from '@mui/material/Switch';
-import FormControlLabel from '@mui/material/FormControlLabel';
-import FormGroup from '@mui/material/FormGroup';
 import MenuItem from '@mui/material/MenuItem';
-import Menu from '@mui/material/Menu';
-import { Link, useNavigate } from "react-router-dom";
+import {useNavigate } from "react-router-dom";
 
 export default function MenuAppBar() {
     const [auth, setAuth] = React.useState(true);
     const [anchorEl, setAnchorEl] = React.useState(null);
     const navigate = useNavigate();
-
-
-    const handleChange = (event) => {
-        setAuth(event.target.checked);
-    };
-
-    const handleMenu = (event) => {
-        setAnchorEl(event.currentTarget);
-    };
-
-
-    const handleOrder = (e) => {
+ 
+    const handleAddPost = (e) => {
         // handleCloseUserMenu()
         navigate('/add-post')
     }
@@ -36,10 +21,7 @@ export default function MenuAppBar() {
         // handleCloseUserMenu()
         navigate('/')
     }
-    const handleClose = () => {
-        setAnchorEl(null);
-    };
-
+  
     return (
         <Box sx={{ flexGrow: 1 }}>
             <AppBar position="fixed">
@@ -56,7 +38,7 @@ export default function MenuAppBar() {
                     <MenuItem onClick={(e) => handleHome(e)}>
                         <Typography textAlign="center" > Home</Typography>
                     </MenuItem>
-                    <MenuItem onClick={(e) => handleOrder(e)}>
+                    <MenuItem onClick={(e) => handleAddPost(e)}>
                         <Typography textAlign="center" > Add Post</Typography>
                     </MenuItem>
                 </Toolbar>

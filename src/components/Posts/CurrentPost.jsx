@@ -16,7 +16,7 @@ function Copyright() {
         <Typography variant="body2" color="text.secondary" align="center">
             {'Copyright © '}
             <Link color="inherit" href="https://www.youtube.com/@programming-geek">
-                My Youtub Channel 👻
+                My Youtube Channel 👻
             </Link>{' '}
             {new Date().getFullYear()}
             {'.'}

@@ -29,7 +29,7 @@ export default function EditPost(props) {
 
     const handleSubmit = async (e) => {
         e.preventDefault()
-        console.log(id)
+        // console.log(id)
         axios.patch(`https://impossible-gray-pocket.cyclic.app/posts/${id}`, values)
 
             .then(res => {
@@ -63,7 +63,7 @@ export default function EditPost(props) {
                     spacing={3}
                 >
                     <Typography sx={{ pt: '20px', ml: '30px' }}>
-                        <h1> Edite Post</h1>
+                        <h1> Edit Post</h1>
                     </Typography>
                     {error && (
                         <Alert severity="error">
@@ -74,7 +74,7 @@ export default function EditPost(props) {
                     {Success && (
                         <Alert severity="success">
                             <AlertTitle>Success</AlertTitle>
-                            This is a success alert — <strong> Post Updated  {Success}</strong>
+                            This is a success alert — <strong>{Success}</strong>
                         </Alert>
                     )}
                     <FormControl sx={{ m: 1, width: '40ch' }} variant="standard">
@@ -91,7 +91,7 @@ export default function EditPost(props) {
                         />
                     </FormControl>
                     <FormControl sx={{ m: 1, width: '40ch' }} variant="standard">
-                        <InputLabel htmlFor="standard-adornment-content">content</InputLabel>
+                        <InputLabel htmlFor="standard-adornment-content">Content</InputLabel>
                         <Input
                             id="standard-adornment-content"
                             type='text'
@@ -108,7 +108,7 @@ export default function EditPost(props) {
                         <Button variant="contained"
                             sx={{ bgcolor: 'green' }}
                         >
-                            + Submite
+                            + Submit
                         </Button>
                     </FormControl>
 

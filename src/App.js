@@ -13,7 +13,7 @@ function App() {
       <Navbar />
       <Routes>
         <Route path="/" exact element={<Home />} />
-        <Route path="/get-sigle-post/:id" exact element={<CurrentPost />} />
+        <Route path="/get-single-post/:id" exact element={<CurrentPost />} />
         <Route path="/add-post" exact element={<AddPost />} />
         <Route path="/edit-post/:id" exact element={<EditPost />} />
 

@@ -61,7 +61,7 @@ export default function AddPost() {
                     spacing={3}
                 >
                     <Typography sx={{ pt: '20px', ml: '30px' }}>
-                        <h1>Creact Your Post</h1>
+                        <h1>Create Your Post</h1>
                     </Typography>
                     {error && (
                         <Alert severity="error">
@@ -72,7 +72,7 @@ export default function AddPost() {
                     {Success && (
                         <Alert severity="success">
                             <AlertTitle>Success</AlertTitle>
-                            This is a success alert — <strong> Post Created  {Success}</strong>
+                            This is a success alert — <strong>{Success}</strong>
                         </Alert>
                     )}
                     <FormControl sx={{ m: 1, width: '40ch' }} variant="standard">

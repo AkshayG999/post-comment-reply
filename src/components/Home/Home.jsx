@@ -40,7 +40,7 @@ export default function Home() {
             <Typography variant="body2" color="text.secondary" align="center">
                 {'Copyright © '}
                 <Link color="inherit" href="https://www.youtube.com/@programming-geek">
-                    My Youtub Channel 👻
+                    My Youtube Channel 👻
                 </Link>{' '}
                 {new Date().getFullYear()}
                 {'.'}
@@ -53,7 +53,7 @@ export default function Home() {
     const [error, setError] = useState("");
 
     const CurrentCard = (e, index) => {
-        navigate(`/get-sigle-post/${e._id}`)
+        navigate(`/get-single-post/${e._id}`)
         localStorage.setItem('index', index)
         localStorage.setItem('id', e._id)
     }
@@ -99,7 +99,7 @@ export default function Home() {
                 {Success && (
                     <Alert severity="success">
                         <AlertTitle>Success</AlertTitle>
-                        This is a success alert — <strong> Post Created  {Success}</strong>
+                        This is a success alert — <strong>{Success}</strong>
                     </Alert>
                 )}
                 <Grid container spacing={{ xs: 2, md: 3 }} columns={{ xs: 4, sm: 8, md: 12 }}>
@@ -112,7 +112,7 @@ export default function Home() {
                                         <Typography variant="h5" component="div">
                                            {e.title.slice(0,70) + "..."}
                                         </Typography>
-                                        {e.content.slice(0, 50) + "..."} <div><button>...read more</button></div>
+                                        {e.content.slice(0, 50) + "..."} <div><button>read more</button></div>
                                     </CardContent>
                                 </Card>
                                 <Button variant="contained" sx={{ minWidth: 100, maxWidth: 30, mt: '50px', margin: '20px' }} onClick={() => handlePostEdit(e, index)}>Edit</Button>
