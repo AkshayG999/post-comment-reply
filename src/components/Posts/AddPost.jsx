@@ -89,7 +89,7 @@ export default function AddPost() {
                         />
                     </FormControl>
                     <FormControl sx={{ m: 1, width: '40ch' }} variant="standard">
-                        <InputLabel htmlFor="standard-adornment-content">content</InputLabel>
+                        <InputLabel htmlFor="standard-adornment-content">Content</InputLabel>
                         <Input
                             id="standard-adornment-content"
                             type='text'

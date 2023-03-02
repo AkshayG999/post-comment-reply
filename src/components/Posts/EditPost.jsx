@@ -23,8 +23,6 @@ export default function EditPost(props) {
     const handleChange = (prop) => (event) => {
         setValues({ ...values, [prop]: event.target.value })
     };
-
-    const [posts, setPosts] = useState([]);
     var id = localStorage.getItem('edit_id')
 
     const handleSubmit = async (e) => {
